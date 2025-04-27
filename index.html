@@ -2,23 +2,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Precine – Previs your script. Like a Pro.</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="scripts.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precine</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Precine</h1>
         <p class="tagline">Previs your script. Like a Pro.</p>
     </header>
+
+    <nav>
+        <button onclick="showTab('script')">Script</button>
+        <button onclick="showTab('breakdown')">Breakdown</button>
+        <button onclick="showTab('shotlist')">Shot List</button>
+        <button onclick="showTab('characters')">Characters</button>
+        <button onclick="showTab('assets')">Assets</button>
+        <button onclick="showTab('storyboard')">Storyboard</button>
+    </nav>
+
     <main>
-        <textarea id="scriptInput" placeholder="Paste your script here..."></textarea>
-        <button onclick="parseScript()">Parse Script</button>
-        <section id="sceneOutput"></section>
+        <section id="script" class="tab">
+            <textarea id="scriptInput" placeholder="Paste your script here..."></textarea>
+            <button onclick="parseScript()">Parse Script</button>
+        </section>
+
+        <section id="breakdown" class="tab" style="display:none;">
+            <h2>Scene Breakdown</h2>
+            <div id="breakdownOutput"></div>
+        </section>
+
+        <section id="shotlist" class="tab" style="display:none;">
+            <h2>Shot List</h2>
+            <div id="shotList"></div>
+            <button onclick="addShot()">Add Shot</button>
+        </section>
+
+        <section id="characters" class="tab" style="display:none;">
+            <h2>Characters</h2>
+            <div id="characterList"></div>
+        </section>
+
+        <section id="assets" class="tab" style="display:none;">
+            <h2>Assets</h2>
+            <div id="assetList"></div>
+        </section>
+
+        <section id="storyboard" class="tab" style="display:none;">
+            <h2>Storyboard</h2>
+            <div id="storyboardList"></div>
+            <button onclick="addStoryboardFrame()">Add Storyboard Frame</button>
+        </section>
+
+        <section>
+            <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                <textarea id="feedback" placeholder="Send Feedback..."></textarea>
+                <button type="submit">Send Feedback</button>
+            </form>
+        </section>
     </main>
-    <footer>
-        <button onclick="sendFeedback()">Send Feedback</button>
-    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
